@@ -1,0 +1,18 @@
+# 集成测试数字员工。用例执行由脚本负责,只在失败时被叫起来做诊断,不改被测代码。
+id: itest-employee
+name: 集测员工
+runtime: claude-code
+model: default
+prompt: prompts/itest.md
+
+procedures: [itest-run]
+
+tools:
+  allow: [Read, Grep, Glob, Write, Edit, Bash]
+  deny: [WebFetch, WebSearch]
+
+permissions:
+  write_paths: ["tasks/{task_id}/**", "itest/**", "repos/*/itest/**"]
+  # 不改被测代码——不然集成测试失败时,最省事的做法是把测试改成必过。
+  forbid_paths: ["repos/*/src/**"]
+
