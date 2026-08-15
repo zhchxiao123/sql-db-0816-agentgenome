@@ -15,12 +15,18 @@ runtime:
       mc_cmd: mc
       model_tiers: {}
     agentteams:
-      transport: matrix-minio
+      cmd: null
+      max_turns: 40
       endpoint: http://192.168.107.2:8090
       consumer_token_env: AGENTTEAMS_CONSUMER_TOKEN
+      transport: matrix-minio
       matrix_homeserver: http://192.168.107.2:8080
+      matrix_room: null
       matrix_token_env: AGENTTEAMS_MATRIX_TOKEN
       storage_prefix: agentteams/agentteams-storage/shared
+      worker: null
+      mc_cmd: mc
+      model_tiers: {}
   default_is_explicit: true
 concurrency:
   global_jobs: 3
