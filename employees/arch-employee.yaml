@@ -1,6 +1,6 @@
 id: arch-employee
 name: 架构员工
-runtime: claude-code
+runtime: agentteams
 model: default
 prompt: prompts/arch.md
 procedures:
