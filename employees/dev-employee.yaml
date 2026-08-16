@@ -1,21 +1,28 @@
-# 开发数字员工。业务代码的唯一书写者。
 id: dev-employee
 name: 开发员工
-runtime: claude-code
+runtime: agentteams
 model: default
 prompt: prompts/dev.md
-
-procedures: [code-develop, unit-gate]
-
+procedures:
+- code-develop
+- unit-gate
 tools:
-  allow: [Read, Grep, Glob, Write, Edit, Bash]
-  deny: [WebFetch, WebSearch]
-
+  allow:
+  - Read
+  - Grep
+  - Glob
+  - Write
+  - Edit
+  - Bash
+  deny:
+  - WebFetch
+  - WebSearch
 permissions:
-  # 只能写**本任务计划命中的模块**与本任务目录——不是所有业务仓,也不是所有任务目录。
-  # `{task_modules}` 在派发时按计划展开成每个模块一条;计划里一个模块都没有时它展开成零条,
-  # 于是这个员工一行业务代码都写不进去,而那正是想要的:计划没写清楚该当场卡住。
-  write_paths: ["{task_modules}/**", "tasks/{task_id}/**"]
-  # 改了规则就能自己给自己开绿灯;改了 CI 与子模块指针同理。
-  forbid_paths: ["genome/rules/**", ".github/**", ".gitmodules"]
-
+  write_paths:
+  - '{task_modules}/**'
+  - tasks/{task_id}/**
+  forbid_paths:
+  - genome/rules/**
+  - .github/**
+  - .gitmodules
+assignee: ''
