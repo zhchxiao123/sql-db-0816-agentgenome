@@ -13,10 +13,11 @@ runtime:
       storage_prefix: null
       worker: null
       mc_cmd: mc
+      agentteams_max_job_runtime_s: 3600
       model_tiers: {}
     agentteams:
       cmd: null
-      max_turns: 40
+      max_turns: 4000
       endpoint: http://192.168.107.2:8090
       consumer_token_env: AGENTTEAMS_CONSUMER_TOKEN
       transport: matrix-minio
@@ -26,6 +27,7 @@ runtime:
       storage_prefix: agentteams/agentteams-storage/shared
       worker: null
       mc_cmd: mc
+      agentteams_max_job_runtime_s: 3600
       model_tiers: {}
   default_is_explicit: true
 concurrency:
