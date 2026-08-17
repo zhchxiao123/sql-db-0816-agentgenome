@@ -23,4 +23,4 @@ permissions:
   - repos/*/itest/**
   forbid_paths:
   - repos/*/src/**
-assignee: ''
+assignee: xiaozhongcheng
