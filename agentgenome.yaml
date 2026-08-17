@@ -35,8 +35,26 @@ concurrency:
 topology:
   default: single
   critique:
+    enabled: false
+    on_protected: true
+    min_modules: 2
+    min_changed_files: 5
     max_rounds: 100000000
+    budget_share: 0.3
+  assisted:
+    employees:
+    - itest-employee
+    confirmer: ''
   best_of_n:
+    attempts:
+    - key: minimal
+      hint: 最小改动:能不动的地方都别动
+    - key: perf
+      hint: 性能优先:热路径上的开销要说得出数量级
+    - key: contract
+      hint: 契约先行:先把接口与数据形状定清楚再写实现
+    judge_employee: reviewer-employee
+    judge_procedure: code-critique
     max_attempts: 100000000
 budgets:
   enforce: false
