@@ -2,21 +2,28 @@ id: write-tests
 version: 1.0.0
 summary: 按验收标准写用例,写完是红的——实现由开发员工接手
 kind: agentic
-
 trigger:
-  states: [DEVELOPING]
-
+  states:
+  - DEVELOPING
 inputs:
   schema:
     type: object
-    required: [requirement]
+    required:
+    - requirement
     properties:
-      requirement: {type: string}
-      acceptance: {type: array, items: {type: string}}
-      module_ids: {type: array, items: {type: string}}
-
+      requirement:
+        type: string
+      acceptance:
+        type: array
+        items:
+          type: string
+      module_ids:
+        type: array
+        items:
+          type: string
 outputs:
   schema_ref: schemas/out.json
-
 compat:
-  runtimes: [claude-code]
+  runtimes:
+  - claude-code
+  - agentteams
